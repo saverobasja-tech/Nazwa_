@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+      <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
@@ -8,138 +8,109 @@
         * { box-sizing: border-box; }
         
         body {
-            /* MENGGUNAKAN BACKGROUND DINO KUNING DARI URL */
+            /* Background Dino Kuning yang lucu & estetik */
             background-image: url('https://img.pikbest.com/origin/09/20/47/954pIkbEsTkWc.jpg!w700wp');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             background-attachment: fixed;
-            
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             margin: 0;
-            overflow: hidden;
-            position: relative;
+            padding: 20px;
         }
 
-        /* Overlay gelap tipis agar teks mudah dibaca */
+        /* Overlay halus agar teks terbaca jelas */
         body::before {
             content: '';
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.15); /* Kegelapan overlay (0.0 - 1.0) */
+            background: rgba(255, 255, 255, 0.2);
             z-index: 1;
         }
 
-        /* Konten Utama */
         .container {
             text-align: center;
-            background: rgba(255, 255, 255, 0.85); /* Transparansi kotak putih */
-            padding: 35px;
-            border-radius: 30px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-            border: 2px solid #ffffff;
-            max-width: 420px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 400px;
+            width: 100%;
             z-index: 10;
-            backdrop-filter: blur(5px); /* Efek blur di belakang kotak */
-            animation: bounceIn 1s;
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.5);
         }
 
-        @keyframes bounceIn {
-            0% { opacity: 0; transform: scale(0.3); }
-            50% { opacity: 1; transform: scale(1.05); }
-            70% { transform: scale(0.9); }
-            100% { transform: scale(1); }
-        }
-
-        h1 { color: #5a7d4f; font-size: 24px; margin-bottom: 20px; text-shadow: 1px 1px 2px rgba(255,255,255,0.5); }
-        p { color: #333; line-height: 1.8; font-size: 16px; }
+        .emoji-utama { font-size: 50px; margin-bottom: 10px; }
         
-        .btn-utama {
-            margin-top: 30px;
-            padding: 12px 40px;
-            border: none;
-            border-radius: 50px;
-            background: linear-gradient(135deg, #aed581 0%, #8bc34a 100%);
+        h1 { color: #4a6741; font-size: 22px; margin-bottom: 15px; }
+        
+        .btn-buka {
+            background: #8bc34a;
             color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
             font-weight: bold;
-            font-size: 16px;
             cursor: pointer;
             transition: 0.3s;
-            box-shadow: 0 5px 20px rgba(139, 195, 74, 0.4);
+            box-shadow: 0 4px 15px rgba(139, 195, 74, 0.3);
         }
 
-        .btn-utama:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(139, 195, 74, 0.5);
-        }
-
-        /* Tampilan Pesan Akhir (Overlay) */
-        #overlay {
+        /* Tampilan Pesan Setelah Klik */
+        #pesan {
             display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(255, 255, 255, 0.98);
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 100;
-            animation: fadeIn 1s ease-in-out;
-            padding: 25px;
-        }
-
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-        .pesan-box {
-            background: #ffffff;
-            padding: 35px;
-            border-radius: 25px;
-            border-bottom: 6px solid #8bc34a;
-            max-width: 500px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
             text-align: left;
-            position: relative;
+            margin-top: 20px;
+            animation: fadeIn 1s ease;
         }
 
-        /* Hiasan Sticker Dino Kecil di Pesan (Optional) */
-        .pesan-box::after {
-            content: '▫️▫️▫️';
-            position: absolute;
-            bottom: 10px; right: 20px;
-            font-size: 10px; color: #ddd;
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .isi-pesan {
+            background: #f9fdf9;
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 5px solid #8bc34a;
+            line-height: 1.7;
+            color: #333;
+            font-size: 15px;
         }
     </style>
 </head>
 <body>
 
-    <div class="container" id="mainCard">
-        <div style="font-size: 60px; margin-bottom: 15px;">🌿</div>
-        <h1>Minal Aidzin Wal Faizin</h1>
-        <p>Ada pesan tulus yang ingin aku sampaikan ke kamu...</p>
-        <button class="btn-utama" onclick="tampilPesan()">Buka Pesan 🤍</button>
-    </div>
+    <div class="container">
+        <div id="tampilanAwal">
+            <div class="emoji-utama">🦖✨</div>
+            <h1>Minal Aidzin Wal Faizin</h1>
+            <p style="color: #666; font-size: 14px; margin-bottom: 25px;">
+                Ada pesan tulus yang ingin aku sampaikan...
+            </p>
+            <button class="btn-buka" onclick="bukaPesan()">Buka Pesan 🤍</button>
+        </div>
 
-    <div id="overlay">
-        <div style="font-size: 40px; margin-bottom: 25px;">🤍🕊️</div>
-        <div class="pesan-box">
-            <p>
+        <div id="pesan">
+            <div style="font-size: 30px; margin-bottom: 15px; text-align: center;">🕊️🤍</div>
+            <div class="isi-pesan">
                 <b>Minal aidzin yaa 🤍 Mohon maaf lahir dan batin.</b><br><br>
                 Maaf ya kalau kemarin-kemarin aku sempat bikin kamu nggak nyaman, atau ada sikap dan kata-kataku yang kurang berkenan. Aku sadar kalau kemarin aku sempat berlebihan, baik dari cara chatting maupun sikapku ke kamu. Sekarang aku sudah coba banyak introspeksi diri.<br><br>
                 Jadi untuk sementara, aku nggak berani ngechat kamu duluan. Aku takut malah ganggu kamu lagi atau bikin kamu kepikiran yang aneh-aneh.<br><br>
                 Semoga keberuntungan selalu menyertai kamu. <b>Have a nice day!</b>
-            </p>
+            </div>
         </div>
-        <p style="margin-top: 30px; color: #999; font-size: 14px; font-style: italic;">- Terima kasih sudah mau membaca -</p>
     </div>
 
     <script>
-        // Tampilkan Pesan
-        function tampilPesan() {
-            document.getElementById('overlay').style.display = 'flex';
+        function bukaPesan() {
+            document.getElementById('tampilanAwal').style.display = 'none';
+            document.getElementById('pesan').style.display = 'block';
         }
     </script>
 </body>
 </html>
+      
