@@ -1,29 +1,28 @@
-      <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minal Aidzin Yaa 🤍</title>
     <style>
-        * { box-sizing: border-box; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         
         body {
-            /* Background Dino Kuning yang lucu & estetik */
-            background-image: url('https://img.pikbest.com/origin/09/20/47/954pIkbEsTkWc.jpg!w700wp');
+            /* Background Nailong Gemoy */
+            background-image: url('https://w0.peakpx.com/wallpaper/559/314/HD-wallpaper-nailong-cartoon-funny-love-cute.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             background-attachment: fixed;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            margin: 0;
             padding: 20px;
         }
 
-        /* Overlay halus agar teks terbaca jelas */
+        /* Overlay halus agar Nailong tetap kelihatan tapi teks terbaca */
         body::before {
             content: '';
             position: absolute;
@@ -34,49 +33,50 @@
 
         .container {
             text-align: center;
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.96);
             padding: 30px;
             border-radius: 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             max-width: 400px;
             width: 100%;
             z-index: 10;
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255,255,255,0.5);
+            backdrop-filter: blur(5px);
+            border: 2px solid #ffffff;
+            animation: muncul 1s ease-out;
         }
 
-        .emoji-utama { font-size: 50px; margin-bottom: 10px; }
-        
-        h1 { color: #4a6741; font-size: 22px; margin-bottom: 15px; }
+        @keyframes muncul {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 { color: #5a7d4f; font-size: 22px; margin-bottom: 15px; }
         
         .btn-buka {
-            background: #8bc34a;
+            margin-top: 25px;
+            background: linear-gradient(135deg, #aed581 0%, #8bc34a 100%);
             color: white;
             border: none;
-            padding: 12px 30px;
+            padding: 14px 40px;
             border-radius: 50px;
             font-weight: bold;
             cursor: pointer;
             transition: 0.3s;
-            box-shadow: 0 4px 15px rgba(139, 195, 74, 0.3);
+            font-size: 16px;
         }
 
-        /* Tampilan Pesan Setelah Klik */
         #pesan {
             display: none;
             text-align: left;
             margin-top: 20px;
-            animation: fadeIn 1s ease;
         }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
         .isi-pesan {
-            background: #f9fdf9;
+            background: #fdfdfd;
             padding: 20px;
-            border-radius: 15px;
+            border-radius: 20px;
             border-left: 5px solid #8bc34a;
-            line-height: 1.7;
+            line-height: 1.8;
             color: #333;
             font-size: 15px;
         }
@@ -86,16 +86,14 @@
 
     <div class="container">
         <div id="tampilanAwal">
-            <div class="emoji-utama">🦖✨</div>
+            <div style="font-size: 70px; margin-bottom: 15px;">🐲✨</div>
             <h1>Minal Aidzin Wal Faizin</h1>
-            <p style="color: #666; font-size: 14px; margin-bottom: 25px;">
-                Ada pesan tulus yang ingin aku sampaikan...
-            </p>
+            <p style="color: #555;">Ada pesan tulus dari aku buat kamu...</p>
             <button class="btn-buka" onclick="bukaPesan()">Buka Pesan 🤍</button>
         </div>
 
         <div id="pesan">
-            <div style="font-size: 30px; margin-bottom: 15px; text-align: center;">🕊️🤍</div>
+            <div style="font-size: 40px; margin-bottom: 20px; text-align: center;">🕊️🤍</div>
             <div class="isi-pesan">
                 <b>Minal aidzin yaa 🤍 Mohon maaf lahir dan batin.</b><br><br>
                 Maaf ya kalau kemarin-kemarin aku sempat bikin kamu nggak nyaman, atau ada sikap dan kata-kataku yang kurang berkenan. Aku sadar kalau kemarin aku sempat berlebihan, baik dari cara chatting maupun sikapku ke kamu. Sekarang aku sudah coba banyak introspeksi diri.<br><br>
@@ -109,8 +107,8 @@
         function bukaPesan() {
             document.getElementById('tampilanAwal').style.display = 'none';
             document.getElementById('pesan').style.display = 'block';
+            document.getElementById('pesan').style.animation = 'muncul 0.8s ease-in-out';
         }
     </script>
 </body>
 </html>
-      
